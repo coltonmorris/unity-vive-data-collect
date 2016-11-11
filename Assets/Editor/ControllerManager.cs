@@ -15,7 +15,9 @@ public class ControllerManager : MonoBehaviour
     private SteamVR_TrackedObject trackedObj;
     void Start()
     {
-        trackedObj = GetComponent();
+       //trackedObj = GetComponent();
+        //trackedObj = GetComponent<SteamVR_TrackedObject>();
+
     }
 
     void Update()

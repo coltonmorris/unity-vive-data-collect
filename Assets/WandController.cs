@@ -8,7 +8,7 @@ public class WandController : MonoBehaviour
 {
     public bool triggerButtonDown = false;
     private Valve.VR.EVRButtonId triggerButton = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
-    private ushort pulsePower = 700;
+    private ushort pulsePower = 1500;
     private SteamVR_Controller.Device controller
     {
         get
@@ -21,7 +21,7 @@ public class WandController : MonoBehaviour
     void Start()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
-        //WriteLine("hand_x,hand_y,hand_z,hand_rot_x,hand_rot_y,hand_rot_z,elbow_x,elbow_y,elbow_z,elbow_rot_x,elbow_rot_y,elbow_rot_z");
+        WriteLine("hand_x,hand_y,hand_z,hand_rot_x,hand_rot_y,hand_rot_z,elbow_x,elbow_y,elbow_z,elbow_rot_x,elbow_rot_y,elbow_rot_z");
     }
 
     void Update()
@@ -37,16 +37,17 @@ public class WandController : MonoBehaviour
         {
             // haptic feedback to know we touched the button
             controller.TriggerHapticPulse(pulsePower);
-            // Default parameter is the touchpad. Vector2 is returned and goes from (-1,-1) to  (1,1)
-            Vector2 touchpad = controller.GetAxis();
-            Debug.Log("Transform, this is probably what we want: " + controller.transform);
-            Debug.Log("Touchpad x: " + touchpad.x);
+
+            Vector3 rot = controller.transform.rot.eulerAngles;
+            Vector3 pos = controller.transform.pos;
+            WriteLine(pos.x.ToString() + "," + pos.y.ToString() + "," + pos.z.ToString() + "," + rot.x.ToString() + "," + rot.y.ToString() + "," + rot.z.ToString());
+           /* Debug.Log("Touchpad x: " + touchpad.x);
             Debug.Log("Touchpad y: " + touchpad.y);
             Debug.Log("Save some data!");
             Debug.Log("Controller angular velocity: " + controller.angularVelocity);
             Debug.Log("Touchpad: " + touchpad);
             Debug.Log("Controller velocity: " + controller.velocity);
-            
+            */
         }
     }
     void WriteLine(string line)
