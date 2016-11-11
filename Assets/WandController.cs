@@ -9,6 +9,7 @@ public class WandController : MonoBehaviour
     public bool triggerButtonDown = false;
     private Valve.VR.EVRButtonId triggerButton = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
     private ushort pulsePower = 1500;
+    private bool start = false;
     private SteamVR_Controller.Device controller
     {
         get
@@ -43,6 +44,9 @@ public class WandController : MonoBehaviour
 
         if (triggerButtonDown)
         {
+            start = true;
+        }
+        if (start) {
             // haptic feedback to know we touched the button
             controller.TriggerHapticPulse(pulsePower);
 
