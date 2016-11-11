@@ -10,6 +10,7 @@ public class WandController : MonoBehaviour
     private Valve.VR.EVRButtonId triggerButton = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
     private ushort pulsePower = 1500;
     private bool start = false;
+    private string time = DateTime.Now.ToString("dd_MM_yyyy_HH_mm");
     private SteamVR_Controller.Device controller
     {
         get
@@ -47,9 +48,6 @@ public class WandController : MonoBehaviour
             start = true;
         }
         if (start) {
-            // haptic feedback to know we touched the button
-            controller.TriggerHapticPulse(pulsePower);
-
             Vector3 rot = controller.transform.rot.eulerAngles;
             Vector3 pos = controller.transform.pos;
             Vector3 elbow_rot = elbow_controller.transform.rot.eulerAngles;
@@ -60,7 +58,6 @@ public class WandController : MonoBehaviour
     }
     void WriteLine(string line)
     {
-        string time = DateTime.Now.ToString("dd_MM_yyyy_HH_mm");
         string path = @"C:\Temp\" + time + ".csv";
         using (var w = new StreamWriter(path, true))
         {
