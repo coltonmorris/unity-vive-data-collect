@@ -48,7 +48,10 @@ public class WandController : MonoBehaviour
 
             Vector3 rot = controller.transform.rot.eulerAngles;
             Vector3 pos = controller.transform.pos;
-            WriteLine(pos.x.ToString() + "," + pos.y.ToString() + "," + pos.z.ToString() + "," + rot.x.ToString() + "," + rot.y.ToString() + "," + rot.z.ToString());
+            Vector3 elbow_rot = elbow_controller.transform.rot.eulerAngles;
+            Vector3 elbow_pos = elbow_controller.transform.pos;
+
+            WriteLine(pos.x.ToString() + "," + pos.y.ToString() + "," + pos.z.ToString() + "," + rot.x.ToString() + "," + rot.y.ToString() + "," + rot.z.ToString() + "," + elbow_pos.x.ToString() + "," + elbow_pos.y.ToString() + "," + elbow_pos.z.ToString() + "," + elbow_rot.x.ToString() + "," + elbow_rot.y.ToString() + "," + elbow_rot.z.ToString());
         }
     }
     void WriteLine(string line)
