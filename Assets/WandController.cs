@@ -16,8 +16,16 @@ public class WandController : MonoBehaviour
             return SteamVR_Controller.Input((int)trackedObj.index);
         }
     }
+    private SteamVR_Controller.Device elbow_controller
+    {
+        get
+        {
+            return SteamVR_Controller.Input((int)trackedObj.index + 1);
+        }
+    }
 
     private SteamVR_TrackedObject trackedObj;
+
     void Start()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
@@ -41,13 +49,6 @@ public class WandController : MonoBehaviour
             Vector3 rot = controller.transform.rot.eulerAngles;
             Vector3 pos = controller.transform.pos;
             WriteLine(pos.x.ToString() + "," + pos.y.ToString() + "," + pos.z.ToString() + "," + rot.x.ToString() + "," + rot.y.ToString() + "," + rot.z.ToString());
-           /* Debug.Log("Touchpad x: " + touchpad.x);
-            Debug.Log("Touchpad y: " + touchpad.y);
-            Debug.Log("Save some data!");
-            Debug.Log("Controller angular velocity: " + controller.angularVelocity);
-            Debug.Log("Touchpad: " + touchpad);
-            Debug.Log("Controller velocity: " + controller.velocity);
-            */
         }
     }
     void WriteLine(string line)
