@@ -1,0 +1,7 @@
+NOTES:
+-Recurrent NN are dependent on previous states.
+-Genetic Algorithms can be used to find the best models.
+-Generative Adversarial Networks probably aren't that helpful ( they can generate things, like pictures)
+-One shot learning. Neural Net without much data
+-variational autoencoders. Last option. Probably a bit different than needed.
+
